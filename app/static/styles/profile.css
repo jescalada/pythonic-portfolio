@@ -1,0 +1,260 @@
+:root {
+    --fs-xl: clamp(0.3rem, 2vw, 1.25rem);
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0px;
+    margin-left: 0px;
+    background: #9796f0;
+    /* fallback for old browsers */
+    background-image: -webkit-linear-gradient(to right, #fbc7d4, #9796f0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(to right, #fbc7d4, #9796f0);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.juan {
+    background-image: linear-gradient(to right, #402ded, #9cd7f7);
+}
+
+#menu {
+    z-index: 2;
+    cursor: pointer;
+}
+
+#menu {
+    z-index: 2;
+    cursor: pointer;
+}
+
+#menu-bar {
+    width: 45px;
+    height: 40px;
+    margin: 15px 0 0px 20px;
+}
+
+.bar {
+    height: 5px;
+    width: 100%;
+    background-color: white;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#bar1 {
+    transform: translateY(-4px);
+}
+
+#bar3 {
+    transform: translateY(4px);
+}
+
+.nav {
+    transition: 0.3s ease;
+    display: none;
+}
+
+.nav ul {
+    padding: 0 22px 0 10;
+}
+
+.nav li {
+    list-style: none;
+    padding: 12px 0 5px 0;
+}
+
+.nav li a {
+    color: #9796f0;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.nav li a:hover {
+    font-weight: bold;
+}
+
+.menu-bg,
+#menu {
+    top: 0;
+    right: 15px;
+    position: absolute;
+}
+
+.menu-bg {
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 30px 0px 20px 20px;
+    background: radial-gradient(circle, white, white);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.change {
+    display: block;
+}
+
+.change .bar {
+    background-color: white;
+}
+
+.change #bar1 {
+    transform: translateY(-45px) rotateZ(-4deg);
+}
+
+.change #bar2 {
+    opacity: 0;
+}
+
+.change #bar3 {
+    transform: translateY(45px) rotateZ(-6deg);
+}
+
+.change-bg {
+    width: 300px;
+    height: 300px;
+    transform: translate(65%, -40%);
+}
+
+.img-raised {
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, .24), 0 5px 5px -5px rgba(0, 0, 0, .2);
+}
+
+.rounded-circle {
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+}
+
+.img-fluid,
+.img-thumbnail {
+    max-height: 35vh;
+    min-width: 26vh;
+}
+
+.card-header{
+    font-size: var(--fs-xl);
+    text-align: center;
+}
+
+.projects {
+    top: 280px;
+    max-width: 875px;
+}
+
+.experience {
+    margin: auto;
+}
+
+.tooltips {
+    display: inline-block;
+    position: relative;
+    z-index: 999;
+}
+
+.tooltips .tooltip-image img {
+    position: relative;
+    height: 100px;
+    margin-right: 1em;
+    border-radius: 3px;
+}
+
+.tooltips .tooltip-content {
+    position: absolute;
+    z-index: 999;
+    width: 320px;
+    margin: 0 0 0 -225px;
+    bottom: 100%;
+    left: 100%;
+    text-align: left;
+    font-size: 15px;
+    line-height: 30px;
+    -webkit-box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+    box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+    background: #2b2b2b;
+    opacity: 0;
+    border-radius: 5px;
+    cursor: default;
+    pointer-events: none;
+}
+
+.tooltips .tooltip-content::after {
+    content: "";
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: #2a3035 transparent transparent;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.tooltips:hover .tooltip-content,
+.tooltips:active .tooltip-content {
+    pointer-events: auto;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg);
+    transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg);
+}
+
+.tooltips .tooltip-desc {
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+    display: block;
+    padding: 1em;
+    color: #ffffff;
+}
+
+.tooltips .tooltip-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    display: block;
+    padding: 0.5rem;
+    color: #ffffff;
+}
+
+.lead {
+    font-size: 1.3rem !important;
+    font-weight: 300;
+    padding: 0rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.name {
+    text-align: left;
+    margin: auto;
+    color: white;
+    font-size: 2.5rem;
+    margin: 1rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#googleMap {
+    width: 100%;
+    height: 40vh;
+    border-radius: 3px;
+}
+
+.fa {
+    position: relative;
+    font-size: 30px;
+    padding-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    color: #ffffff;
+}
