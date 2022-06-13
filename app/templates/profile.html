@@ -76,7 +76,7 @@
         <div class="projects mb-3">
           <div class="card">
             <div class="card-header">Projects</div>
-            <div class="card-body row" style="--bs-gutter-x: 0;">
+            <div class="card-body row" style="--bs-gutter-x: 0; padding: 0.5rem;">
               {% for project in info['projects'] %}
 
               <div class="card col project" onclick="window.open('{{ project['projUrl'] }}', '_blank')" style="min-width: 16rem;">

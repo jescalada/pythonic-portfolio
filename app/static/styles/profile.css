@@ -263,3 +263,12 @@ body {
 #hobbies-container {
     padding: 1rem 2.5rem;
 }
+
+.project {
+    padding: 0 !important;
+    margin: 0.5rem;
+}
+
+.project:hover {
+    cursor: pointer;
+}
