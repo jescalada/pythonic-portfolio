@@ -1,5 +1,6 @@
 :root {
-    --fs-xl: clamp(0.3rem, 2vw, 1.25rem);
+    --fs-med: clamp(0.6rem, 2vw, 1rem);
+    --fs-xxl: clamp(1rem, 2vw, 1.25rem);
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 }
 
 .juan {
-    background-image: linear-gradient(to right, #402ded, #9cd7f7);
+    background-image: linear-gradient(to right, #7a6bff, #93d9ff);
 }
 
 #menu {
@@ -135,8 +136,8 @@ body {
     min-width: 26vh;
 }
 
-.card-header{
-    font-size: var(--fs-xl);
+.card-header {
+    font-size: var(--fs-xxl);
     text-align: center;
 }
 
@@ -157,16 +158,16 @@ body {
 
 .tooltips .tooltip-image img {
     position: relative;
-    height: 100px;
-    margin-right: 1em;
+    height: 10rem;
     border-radius: 3px;
+    margin: 1rem;
 }
 
 .tooltips .tooltip-content {
     position: absolute;
     z-index: 999;
-    width: 320px;
-    margin: 0 0 0 -225px;
+    width: 16rem;
+    margin: 0 0 0 -14rem;
     bottom: 100%;
     left: 100%;
     text-align: left;
@@ -257,4 +258,8 @@ body {
 .fa:hover {
     opacity: 0.7;
     color: #ffffff;
+}
+
+#hobbies-container {
+    padding: 1rem 2.5rem;
 }
