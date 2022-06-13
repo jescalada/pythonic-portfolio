@@ -15,7 +15,7 @@ def index():
     """
     Serves the landing page.
     """
-    return render_template('index.html', title="Team Pythonic", url=os.getenv("URL"))
+    return render_template('index.html', title="Juan Escalada", url=os.getenv("URL"))
 
 # Route for the profile page
 @app.route('/profile/<name>')
