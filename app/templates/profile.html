@@ -76,10 +76,17 @@
         <div class="projects mb-3">
           <div class="card">
             <div class="card-header">Projects</div>
-            <div class="card-body">
+            <div class="card-body row" style="--bs-gutter-x: 0;">
               {% for project in info['projects'] %}
-              <h5 class="card-title">{{ project['projName'] }}</h5>
-              <p class="card-text">{{ project['projDesc'] }}</p>
+
+              <div class="card col project" onclick="window.open('{{ project['projUrl'] }}', '_blank')" style="min-width: 16rem;">
+                <img class="card-img-top" src="../static/img/{{ project['projName']|lower|replace(':','') }}.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{ project['projName'] }}</h5>
+                  <p class="card-text">{{ project['projDesc'] }}</p>
+                </div>
+              </div>
+              
               {% endfor %}
             </div>
           </div>
