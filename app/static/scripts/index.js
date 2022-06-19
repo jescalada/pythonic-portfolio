@@ -22,7 +22,7 @@ function setup() {
 // Function for adding a text flicker animation for the landing page description
 function textFlicker() {
     // Define values for the wordFlick function
-    let words = ['Aspiring Production Engineer', 'MLH Fellow', 'Python Enthusiast', 'BCIT Student'],
+    let words = ['Aspiring Production Engineer', 'MLH Fellow', 'Python Enthusiast', 'Game Developer', 'BCIT Student'],
         part,
         i = 0,
         offset = 0,
