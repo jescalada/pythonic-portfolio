@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from datetime import datetime
+from playhouse.shortcuts import model_to_dict
 
 load_dotenv()  # Loads the environment variables from the .env file
 
@@ -52,6 +53,16 @@ def profile(name):
         return render_template('profile.html', name=name, info=info, url=os.getenv("URL"), API_KEY=os.getenv("API_KEY"))
     else:
         return index()
+
+
+@app.route('/api/timeline_post', methods=['POST'])
+def post_timeline_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+    return model_to_dict(timeline_post)
+
 
 # Route for handling 404 errors
 @app.errorhandler(404)
