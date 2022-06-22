@@ -64,6 +64,15 @@ def post_timeline_post():
     return model_to_dict(timeline_post)
 
 
+@app.route('/api/timeline_post', methods=['GET'])
+def get_timeline_post():
+    return {
+        'timeline_posts': [
+            model_to_dict(p)
+            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
+            ]
+        }
+
 # Route for handling 404 errors
 @app.errorhandler(404)
 def not_found(e):
