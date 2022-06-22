@@ -3,6 +3,7 @@ import json
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
+from datetime import datetime
 
 load_dotenv()  # Loads the environment variables from the .env file
 
@@ -15,7 +16,17 @@ db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
         port=3306
     )
 
-print(db)
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.now)
+
+    class Meta:
+        database = db
+
+db.connect()
+db.create_tables([TimelinePost])
 
 os.getenv("API_KEY")  # Obtains the value of the .env variable containing the Google Maps API key
 
