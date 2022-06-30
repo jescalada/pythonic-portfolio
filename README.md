@@ -118,6 +118,14 @@ pip install -r requirements.txt
 
 Create a .env file using the example.env template (make a copy of the file, then replace the values if required)
 
+Database setup:
+MySQL must be installed, and a default user and database must be provided.
+
+MYSQL_HOST=localhost
+MYSQL_USER=<your-user>
+MYSQL_PASSWORD=<your-password>
+MYSQL_DATABASE=<db-name>
+
 *Note: Add your own Google Maps API key in the .env file in order to use the map functionality*
 
 Start flask development server
