@@ -10,12 +10,21 @@ load_dotenv()  # Loads the environment variables from the .env file
 
 app = Flask(__name__)  # Initializes a Flask app
 
-db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-        user=os.getenv("MYSQL_USER"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        host=os.getenv("MYSQL_HOST"),
-        port=3306
-    )
+os.getenv("API_KEY")  # Obtains the value of the .env variable containing the Google Maps API key
+
+
+# configure database
+if os.getenv("TESTING") == 'true':
+    print("Running in testing mode")
+    db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    print("Running in development mode")
+    db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            host=os.getenv("MYSQL_HOST"),
+            port=3306
+        )
 
 class TimelinePost(Model):
     name = CharField()
@@ -28,8 +37,6 @@ class TimelinePost(Model):
 
 db.connect()
 db.create_tables([TimelinePost])
-
-os.getenv("API_KEY")  # Obtains the value of the .env variable containing the Google Maps API key
 
 # Route for the landing page
 @app.route('/')
