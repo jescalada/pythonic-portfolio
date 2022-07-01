@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from peewee import *
 from datetime import datetime
 from playhouse.shortcuts import model_to_dict
+import re
+
 
 load_dotenv()  # Loads the environment variables from the .env file
 
@@ -80,13 +82,18 @@ def post_timeline_post():
             return "Invalid name. Name cannot be empty", 400
     except:
         return "Invalid request. Request missing the field 'name'", 400
+    
     # get valid email or abort
     try:
         email = request.form['email']
         if len(email) == 0:
             return "Invalid email. Email cannot be empty", 400
+        valid_email = is_valid_email(email)
+        if not valid_email:
+            return "Invalid email format", 400
     except:
         return "Invalid request. Request missing the field 'email'", 400
+    
     # get valid content ot abort
     try:
         content = request.form['content']
@@ -99,6 +106,12 @@ def post_timeline_post():
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
 
+# helper function checking email format (credit: TutorialsPoint)
+def is_valid_email(str):
+   pat = "^[a-zA-Z0-9-_]+@[a-zA-Z0-9]+\.[a-z]{1,3}$"
+   if re.match(pat,str):
+      return True
+   return False
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_timeline_post():

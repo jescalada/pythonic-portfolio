@@ -134,4 +134,4 @@ class AppTestCase(unittest.TestCase):
         })
         html = response.get_data(as_text=True)
         assert response.status_code == 400
-        assert "Invalid email" in html
+        assert "Invalid email format" in html
