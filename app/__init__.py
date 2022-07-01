@@ -73,9 +73,29 @@ def timeline():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_timeline_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
+    # get valid name or abort
+    try:
+        name = request.form['name']
+        if len(name) == 0:
+            return "Invalid name. Name cannot be empty", 400
+    except:
+        return "Invalid request. Request missing the field 'name'", 400
+    # get valid email or abort
+    try:
+        email = request.form['email']
+        if len(email) == 0:
+            return "Invalid email. Email cannot be empty", 400
+    except:
+        return "Invalid request. Request missing the field 'email'", 400
+    # get valid content ot abort
+    try:
+        content = request.form['content']
+        if len(content) == 0:
+            return "Invalid content. Content cannot be empty", 400
+    except:
+        return "Invalid request. Request missing the field 'content'", 400
+    
+    
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
 
