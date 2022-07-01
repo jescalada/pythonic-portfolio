@@ -5,17 +5,28 @@ from dotenv import load_dotenv
 from peewee import *
 from datetime import datetime
 from playhouse.shortcuts import model_to_dict
+import re
+
 
 load_dotenv()  # Loads the environment variables from the .env file
 
 app = Flask(__name__)  # Initializes a Flask app
 
-db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-        user=os.getenv("MYSQL_USER"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        host=os.getenv("MYSQL_HOST"),
-        port=3306
-    )
+os.getenv("API_KEY")  # Obtains the value of the .env variable containing the Google Maps API key
+
+
+# configure database
+if os.getenv("TESTING") == 'true':
+    print("Running in testing mode")
+    db = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    print("Running in development mode")
+    db = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            host=os.getenv("MYSQL_HOST"),
+            port=3306
+        )
 
 class TimelinePost(Model):
     name = CharField()
@@ -28,8 +39,6 @@ class TimelinePost(Model):
 
 db.connect()
 db.create_tables([TimelinePost])
-
-os.getenv("API_KEY")  # Obtains the value of the .env variable containing the Google Maps API key
 
 # Route for the landing page
 @app.route('/')
@@ -66,12 +75,43 @@ def timeline():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_timeline_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
+    # get valid name or abort
+    try:
+        name = request.form['name']
+        if len(name) == 0:
+            return "Invalid name. Name cannot be empty", 400
+    except:
+        return "Invalid request. Request missing the field 'name'", 400
+    
+    # get valid email or abort
+    try:
+        email = request.form['email']
+        if len(email) == 0:
+            return "Invalid email. Email cannot be empty", 400
+        valid_email = is_valid_email(email)
+        if not valid_email:
+            return "Invalid email format", 400
+    except:
+        return "Invalid request. Request missing the field 'email'", 400
+    
+    # get valid content ot abort
+    try:
+        content = request.form['content']
+        if len(content) == 0:
+            return "Invalid content. Content cannot be empty", 400
+    except:
+        return "Invalid request. Request missing the field 'content'", 400
+    
+    
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
 
+# helper function checking email format (credit: TutorialsPoint)
+def is_valid_email(str):
+   pat = "^[a-zA-Z0-9-_]+@[a-zA-Z0-9]+\.[a-z]{1,3}$"
+   if re.match(pat,str):
+      return True
+   return False
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_timeline_post():
