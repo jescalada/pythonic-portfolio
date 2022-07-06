@@ -4,10 +4,8 @@ services:
     container_name: pythonic_portfolio
     build: .
     restart: always
-    environment:
-      - FLASK_ENV=development
-    ports:
-      - "80:80"
+    env_file:
+      - .env
     depends_on:
       - mysql
 
@@ -20,5 +18,22 @@ services:
     volumes:
       - portfoliodb:/var/lib/mysql
 
+
+  nginx:
+    container_name: nginx
+    image: jonasal/nginx-certbot
+    restart: always
+    environment:
+      - CERTBOT_EMAIL=name@example.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./user_conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - pythonic_portfolio
+
 volumes:
   portfoliodb:
+  nginx_secrets:
