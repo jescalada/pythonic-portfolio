@@ -1,7 +1,7 @@
 version: "3"
 services:
-  myportfolio:
-    container_name: myportfolio
+  pythonic_portfolio:
+    container_name: pythonic_portfolio
     build: .
     restart: always
     env_file:
@@ -22,7 +22,7 @@ services:
     env_file:
       - .env
     volumes:
-      - mydatabase:/var/lib/mysql
+      - portfoliodb:/var/lib/mysql
 
 volumes:
-  mydatabase:
+  portfoliodb:
