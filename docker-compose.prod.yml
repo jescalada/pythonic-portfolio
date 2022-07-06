@@ -1,0 +1,24 @@
+version: "3"
+services:
+  pythonic_portfolio:
+    container_name: pythonic_portfolio
+    build: .
+    restart: always
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mariadb
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - portfoliodb:/var/lib/mysql
+
+volumes:
+  portfoliodb:
