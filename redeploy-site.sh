@@ -2,6 +2,5 @@
 
 cd ~/pythonic-portfolio
 git fetch && git reset origin/master --hard
-source python3-virtualenv/bin/activate
-pip3 install -r requirements.txt
-systemctl restart myportfolio
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml up -d --build
