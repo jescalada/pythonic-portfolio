@@ -1,10 +1,12 @@
-# PE Track: Week 1 - TEAM PYTHONIC - Portfolio Site
+# Pythonic Portfolio
 
 ## Introduction
 
 TEAM PYTHONIC is from Pod 22.SUM.21 of the Production Engineering Track at MLH Fellowship.  
 
-For week 1, we made a reusable, modular and interactive team portfolio with an enjoyable user interface and a variety of multimedia components. We explored new technologies in Web Development (Flask, Jinja, Google Maps API), learned GitHub best practices to collaborate as a team, and also learned to write more modular, scalable and well-documented code.
+For week 1, we made a reusable, modular and interactive team portfolio with a variety of multimedia components. We explored various technologies in Web Development (Flask, Jinja, Google Maps API), learned GitHub best practices to collaborate as a team, and also learned to write more modular, scalable and well-documented code.
+
+Over the next 11 weeks, we continued working individually to add features to the portfolio while learning our curriculum: We implemented MySQL, Docker, CI/CD with Github Actions, performed Unit Testing with Python's unittest module and monitoring with Grafana and Prometheus.
 
 ## Badges
 
@@ -15,6 +17,8 @@ For week 1, we made a reusable, modular and interactive team portfolio with an e
 ## Description
 
 This is a reusable portfolio template which can be easily adapted to any number of team members. It is also mobile-friendly, which is an important feature considering that 50%+ of traffic on the web comes from mobile devices.
+
+The portfolio can be installed and executed easily by using Docker.
 
 Team Pythonic's portfolio website consists of two main components:
 
@@ -144,37 +148,11 @@ You should get a response like this in the terminal:
 
 You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser! 
 
-*Note: For now, the portfolio site will only work on your local machine while you have it running inside of your terminal. We plan to host it in the cloud in the next few weeks!* 
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
-
-## Tasks
-Each of the following tasks have been completed.
-
-Note: Our team has ensured that we created an issue for each task, we used a new branch for each issue and made corresponding pull requests.
-
-### GitHub Tasks
-- [x] Create Issues for each task below
-- [x] Work on each task in a new branch
-- [x] Open a Pull Request when a task is finished to get feedback
-
-### Portfolio Tasks
-- [x] Add a photo of yourself to the website
-- [x] Add an "About youself" section to the website.
-- [x] Add your previous work experiences
-- [x] Add your hobbies (including images)
-- [x] Add your current/previous education
-- [x] Add a map of all the cool locations/countries you visited
-
-### Flask Tasks
-- [x] Get your Flask app running locally on your machine using the instructions.
-- [x] Add a template for adding multiple work experiences/education/hobbies using [Jinja](https://jinja.palletsprojects.com/en/3.0.x/api/#basics)
-- [x] Create a new page to display hobbies.
-- [x] Add a menu bar that dynamically displays other pages in the app
 
 ## Acknowledgements
 - [Google Maps API](https://developers.google.com/maps)
